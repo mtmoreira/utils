@@ -1,0 +1,17 @@
+# Servers
+alias kriti='ssh -X matheus.moreira@kriti.inf.pucrs.br -p8888'
+alias mount_soft='sshfs matheus.moreira@kriti.inf.pucrs.br:/soft64 /soft64 -p8888'
+alias mount_kriti='sshfs matheus.moreira@kriti.inf.pucrs.br:/home/matheus.moreira ~/work/kriti -p8888'
+
+# Licenses
+alias launch_ieee='ssh -N -D1234 matheus.moreira@kriti.inf.pucrs.br -p 8888 -f'
+alias launch_cadence_licenses='ssh -f -N matheus.moreira@kriti.inf.pucrs.br -p 8888 -L 5280:kriti:5280 -L 5281:kriti:5281'
+#alias launch_cadence_licenses='ssh -f -N matheus.moreira@kriti.inf.pucrs.br -p 8888 -L 5280:10.32.162.114:5280 -L 5281:10.32.162.114:5281'
+
+function tunnel_kriti_license() {
+	# Tunnel para licença da PUCRS"
+	cmd="ssh -f -N -L 5280:kriti.inf.pucrs.br:5280 matheus.moreira@kriti.inf.pucrs.br -p 8888"
+	pgrep -f -x $cmd > /dev/null 2>&1 || $cmd
+	export LM_LICENSE_FILE=$LM_LICENSE_FILE:5280@localhost
+	export CDS_LIC_FILE=$CDS_LIC_FILE:5280@localhost
+}

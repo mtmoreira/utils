@@ -1,0 +1,46 @@
+##############################################
+# Tilix
+##############################################
+# Tilix VTE Config (https://gnunn1.github.io/tilix-web/manual/vteconfig/)
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+	source /etc/profile.d/vte.sh
+fi
+
+##############################################
+# Tensorflow
+##############################################
+alias tensorflow='source ~/venv/bin/activate'
+alias leave_tensorflow='deactivate'
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64
+
+##############################################
+# Modules
+##############################################
+source /usr/local/Modules/init/zsh
+
+##############################################
+# Projects
+##############################################
+# Neural artist
+export NEURAL_ARTIST_PATH=/home/matheus/work/neuralArtist
+# Pytomation
+export PYTOMATION_HOME=/home/matheus/work/pytomation
+
+##############################################
+# Functions
+##############################################
+# Merge pdf
+function pdfmerge() {
+ pdftk $@ cat output pdfmerge.pdf
+}
+
+##############################################
+# Alias
+##############################################
+alias gnome-open='xdg-open' 
+alias ssh_waltinho='ssh u1219556@lnissrv4.eng.utah.edu'
+
+##############################################
+# Colors
+##############################################
+# export PS1="\[$(tput bold)\]\[\033[38;5;6m\]\u\[$(tput sgr0)\]\[\033[38;5;2m\]@\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;6m\]\h\[$(tput bold)\]\[$(tput sgr0)\]\[\033[38;5;160m\]:\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;11m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]\n\[$(tput sgr0)\]"
